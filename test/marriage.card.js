@@ -53,7 +53,7 @@ describe("The cards", function () {
 			}).toThrow();
 		});
 
-		it("it is not possible to create a card with an invalid color", function () {
+		it("It is not possible to create a card with an invalid color", function () {
 			expect(function () {
 				//noinspection JSCheckFunctionSignatures
 				new marriage.Card("white", marriage.card.Value.ten);
@@ -67,7 +67,7 @@ describe("The cards", function () {
 			}).toThrow();
 		});
 
-		it("the toString method returns color and value", function () {
+		it("The toString method returns color and value", function () {
 			var color = marriage.card.Color.red,
 				value = marriage.card.Value.ace;
 
