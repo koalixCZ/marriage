@@ -17,4 +17,16 @@ describe("The player", function () {
 
 		expect(player.getRole()).toEqual(marriage.player.Role.foreman);
 	});
+
+	describe("The foreman", function () {
+		it("The foreman role is... foreman? ;)", function () {
+			expect(new marriage.player.Foreman().getRole()).toEqual(marriage.player.Role.foreman);
+		});
+	});
+
+	describe("The defender", function () {
+		it("The role is defender)", function () {
+			expect(new marriage.player.Defender().getRole()).toEqual(marriage.player.Role.defender);
+		});
+	});
 });
