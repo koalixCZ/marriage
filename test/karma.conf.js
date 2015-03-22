@@ -7,16 +7,22 @@ module.exports = function(config) {
 		files: [
 			// source files
 			"src/marriage.js",
-			"src/marriage.card.js",
-			"src/marriage.pack.js",
-			"src/marriage.player.js",
-			"src/marriage.player.foreman.js",
-			"src/marriage.player.defender.js",
+			"src/card/card.js",
+			"src/card/pack.js",
+			"src/player/player.js",
+			"src/player/role.js",
+			"src/player/foreman.js",
+			"src/player/centre.js",
+			"src/player/defender.js",
 
 			// tests
-			"test/marriage.card.js",
-			"test/marriage.pack.js",
-			"test/marriage.player.js"
+			"test/card/card.js",
+			"test/card/pack.js",
+			"test/player/player.js",
+			"test/player/role.js",
+			"test/player/foreman.js",
+			"test/player/centre.js",
+			"test/player/defender.js"
 		],
 		browsers: ["Chrome"],
 		frameworks: ["jasmine"],

@@ -96,4 +96,4 @@
 	marriage.Card.prototype.toString = function () {
 		return this.color + " " + this.value;
 	};
-}());
+}(marriage));

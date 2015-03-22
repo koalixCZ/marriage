@@ -48,7 +48,6 @@
 	}
 
 
-
 	/**
 	 * Creates a new instance of Pack.
 	 * @constructor
