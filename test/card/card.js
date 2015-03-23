@@ -15,12 +15,12 @@ describe("The cards", function () {
 		});
 	});
 
-	describe("The colours", function () {
-		it("Expected colours exist", function () {
-			expect(marriage.card.Color.bells).toBe("kule");
-			expect(marriage.card.Color.green).toBe("zelené");
-			expect(marriage.card.Color.red).toBe("červené");
-			expect(marriage.card.Color.acorns).toBe("žaludy");
+	describe("The suits", function () {
+		it("Expected suits exist", function () {
+			expect(marriage.card.Suit.bells).toBe("kule");
+			expect(marriage.card.Suit.green).toBe("zelené");
+			expect(marriage.card.Suit.red).toBe("červené");
+			expect(marriage.card.Suit.acorns).toBe("žaludy");
 		});
 	});
 
@@ -29,50 +29,50 @@ describe("The cards", function () {
 		var card;
 
 		it("It is possible to create specific card - the red ace", function () {
-			card = new marriage.Card(marriage.card.Color.red, marriage.card.Value.ace);
+			card = new marriage.Card(marriage.card.Suit.red, marriage.card.Value.ace);
 
 			expect(card instanceof marriage.Card).toBeTruthy();
 		});
 
 		it("It is possible to get the card value", function () {
-			card = new marriage.Card(marriage.card.Color.red, marriage.card.Value.seven);
+			card = new marriage.Card(marriage.card.Suit.red, marriage.card.Value.seven);
 
 			expect(card.getValue()).toBe(marriage.card.Value.seven);
 		});
 
-		it("It is possible to get the card color", function () {
-			card = new marriage.Card(marriage.card.Color.green, marriage.card.Value.ten);
+		it("It is possible to get the card suit", function () {
+			card = new marriage.Card(marriage.card.Suit.green, marriage.card.Value.ten);
 
-			expect(card.getColor()).toBe(marriage.card.Color.green);
+			expect(card.getSuit()).toBe(marriage.card.Suit.green);
 		});
 
 		it("it is not possible to create a card with an invalid value", function () {
 			expect(function () {
 				//noinspection JSCheckFunctionSignatures
-				new marriage.Card(marriage.card.Color.acorns, "twenty");
+				new marriage.Card(marriage.card.Suit.acorns, "twenty");
 			}).toThrow();
 		});
 
-		it("It is not possible to create a card with an invalid color", function () {
+		it("It is not possible to create a card with an invalid suit", function () {
 			expect(function () {
 				//noinspection JSCheckFunctionSignatures
 				new marriage.Card("white", marriage.card.Value.ten);
 			}).toThrow();
 		});
 
-		it("It is not possible to create a card with an invalid value and color", function () {
+		it("It is not possible to create a card with an invalid value and suit", function () {
 			expect(function () {
 				//noinspection JSCheckFunctionSignatures
 				new marriage.Card("a", "b");
 			}).toThrow();
 		});
 
-		it("The toString method returns color and value", function () {
-			var color = marriage.card.Color.red,
+		it("The toString method returns suit and value", function () {
+			var suit = marriage.card.Suit.red,
 				value = marriage.card.Value.ace;
 
-			card = new marriage.Card(color, value);
-			expect(card.toString()).toBe(color + " " + value);
+			card = new marriage.Card(suit, value);
+			expect(card.toString()).toBe(suit + " " + value);
 		});
 	});
 });

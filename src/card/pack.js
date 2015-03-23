@@ -8,16 +8,16 @@
 	 */
 	function getNewPack() {
 		var pack = [],
-			availableColors = marriage.card.Color,
+			availableSuits = marriage.card.Suit,
 			availableValues = marriage.card.Value,
-			color,
+			suit,
 			value;
 
-		for (color in availableColors) {
-			if (availableColors.hasOwnProperty(color)) {
+		for (suit in availableSuits) {
+			if (availableSuits.hasOwnProperty(suit)) {
 				for (value in availableValues) {
 					if (availableValues.hasOwnProperty(value)) {
-						pack.push(new marriage.Card(availableColors[color], availableValues[value]));
+						pack.push(new marriage.Card(availableSuits[suit], availableValues[value]));
 					}
 				}
 			}

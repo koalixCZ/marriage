@@ -11,10 +11,10 @@ describe("The pack", function () {
 	});
 
 	/**
-	 * @param {marriage.card.Color} expected
+	 * @param {marriage.card.Suit} expected
 	 */
-	function takeCardFromPackAndCheckColor(expected) {
-		expect(pack.takeCard().getColor()).toEqual(expected);
+	function takeCardFromPackAndCheckSuit(expected) {
+		expect(pack.takeCard().getSuit()).toEqual(expected);
 	}
 
 	/**
@@ -67,18 +67,18 @@ describe("The pack", function () {
 		}).toThrow();
 	});
 
-	it("Colors in new pack are in order - žaludy, červené, zelené, kule", function () {
+	it("Suits in new pack are in order - žaludy, červené, zelené, kule", function () {
 		var i;
 
 		for (i = 0; i < count; i++) {
 			if (i < 8) {
-				takeCardFromPackAndCheckColor(marriage.card.Color.acorns);
+				takeCardFromPackAndCheckSuit(marriage.card.Suit.acorns);
 			} else if (i >= 8 && i < 16) {
-				takeCardFromPackAndCheckColor(marriage.card.Color.red);
+				takeCardFromPackAndCheckSuit(marriage.card.Suit.red);
 			} else if (i >= 16 && i < 24) {
-				takeCardFromPackAndCheckColor(marriage.card.Color.green);
+				takeCardFromPackAndCheckSuit(marriage.card.Suit.green);
 			} else if (i >= 24 && i < 32) {
-				takeCardFromPackAndCheckColor(marriage.card.Color.bells);
+				takeCardFromPackAndCheckSuit(marriage.card.Suit.bells);
 			}
 		}
 	});

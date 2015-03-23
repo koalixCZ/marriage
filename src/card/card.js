@@ -22,7 +22,7 @@
 	/**
 	 * @enum {string}
 	 */
-	marriage.card.Color = {
+	marriage.card.Suit = {
 		bells: "kule",
 		green: "zelené",
 		red: "červené",
@@ -32,8 +32,8 @@
 
 	/**
 	 * Returns true if the enumeration contains the value.
-	 * @param {marriage.card.Value|marriage.card.Color} value
-	 * @param {marriage.card.Value|marriage.card.Color} enumeration
+	 * @param {marriage.card.Value|marriage.card.Suit} value
+	 * @param {marriage.card.Value|marriage.card.Suit} enumeration
 	 * @return {boolean}
 	 */
 	function isValid(value, enumeration) {
@@ -47,8 +47,8 @@
 
 	/**
 	 * Throws an error when the value is an unknown in the specified enumeration.
-	 * @param {marriage.card.Value|marriage.card.Color} value
-	 * @param {marriage.card.Value|marriage.card.Color} enumeration
+	 * @param {marriage.card.Value|marriage.card.Suit} value
+	 * @param {marriage.card.Value|marriage.card.Suit} enumeration
 	 * @return {string}
 	 * @throws
 	 */
@@ -62,22 +62,22 @@
 
 	/**
 	 * Creates a new instance of a Card.
-	 * @param {marriage.card.Color} color
+	 * @param {marriage.card.Suit} suit
 	 * @param {marriage.card.Value} value
 	 * @constructor
 	 * @throws
 	 */
-	marriage.Card = function (color, value) {
-		this.color = normalize(color, marriage.card.Color);
+	marriage.Card = function (suit, value) {
+		this.suit = normalize(suit, marriage.card.Suit);
 		this.value = normalize(value, marriage.card.Value);
 	};
 
 	/**
-	 * Returns a card color.
-	 * @return {marriage.card.Color}
+	 * Returns a card suit.
+	 * @return {marriage.card.Suit}
 	 */
-	marriage.Card.prototype.getColor = function () {
-		return this.color;
+	marriage.Card.prototype.getSuit = function () {
+		return this.suit;
 	};
 
 	/**
@@ -94,6 +94,6 @@
 	 * @return {string} an instance as a string
 	 */
 	marriage.Card.prototype.toString = function () {
-		return this.color + " " + this.value;
+		return this.suit + " " + this.value;
 	};
 }(marriage));
