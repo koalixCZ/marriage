@@ -18,4 +18,19 @@
 	marriage.Gadget.isFunction = function (arg) {
 		return typeof arg === "function";
 	};
+
+	/**
+	 * Returns object's own enumerable properties as an array.
+	 * @param {object} obj
+	 * @return {Array}
+	 */
+	marriage.Gadget.objectToArray = function (obj) {
+		if (obj === null || obj === undefined) {
+			return [];
+		}
+
+		return Object.keys(obj).map(function (key) {
+			return obj[key];
+		});
+	};
 }());
