@@ -3,16 +3,11 @@ describe("The errors", function () {
 	"use strict";
 
 	it("There is no error without a description", function () {
-		var error,
-			description;
+		var errors = marriage.Gadget.objectToArray(marriage.Error);
 
-		for (error in marriage.Error) {
-			//noinspection JSUnresolvedFunction
-			if (marriage.Error.hasOwnProperty(error)) {
-				description = marriage.Error[error];
-				expect(typeof description).toBe("string");
-				expect(description.trim().length).not.toBe(0);
-			}
-		}
+		errors.forEach(function (description) {
+			expect(typeof description).toBe("string");
+			expect(description.trim().length).not.toBe(0);
+		});
 	});
 });
