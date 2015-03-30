@@ -7,6 +7,7 @@
 	 * @enum {string}
 	 */
 	marriage.Error = {
-		InvalidArgumentException: "Invalid argument exception"
+		InvalidArgumentException: "Invalid argument exception",
+		EventNotRegistered: "Event not registered"
 	};
 }());

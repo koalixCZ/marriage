@@ -4,13 +4,13 @@
 
 	/**
 	 * Creates a new instance of Event.
-	 * @param {string} name
+	 * @param {marriage.EventName} name
 	 * @constructor
 	 */
 	marriage.Event = function (name){
 		/**
 		 * @private
-		 * @type {string}
+		 * @type {marriage.EventName}
 		 */
 		this.name = name;
 

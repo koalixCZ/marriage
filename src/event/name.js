@@ -6,6 +6,6 @@
 	 * @enum {string}
 	 */
 	marriage.EventName = {
-
+		revoke: "revoke"
 	};
 }());
