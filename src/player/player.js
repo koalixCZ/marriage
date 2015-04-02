@@ -2,11 +2,9 @@
 (function () {
 	"use strict";
 
-	marriage.player = marriage.player || {};
-
 	/**
 	 * Creates a new instance of the Player.
-	 * @param {marriage.player.Role} role
+	 * @param {string} name
 	 * @constructor
 	 */
 	marriage.Player = function(name) {
