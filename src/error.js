@@ -8,6 +8,7 @@
 	 */
 	marriage.Error = {
 		InvalidArgumentException: "Invalid argument exception",
-		EventNotRegistered: "Event not registered"
+		EventNotRegistered: "Event not registered",
+		NotImplementedException: "Not implemented"
 	};
 }());
