@@ -55,10 +55,6 @@ describe("The dispatcher", function () {
 		expect(dispatcher.events[marriage.EventName.revoke].callbacks[0]).toBe(listener);
 	});
 
-
-
-
-
 	it("Returns true when the event is registered", function () {
 		dispatcher.registerEvent(marriage.EventName.revoke);
 		expect(dispatcher.isEventRegistered(marriage.EventName.revoke)).toBe(true);
@@ -66,9 +62,5 @@ describe("The dispatcher", function () {
 
 	it("Returns false when the event is not registered", function () {
 		expect(dispatcher.isEventRegistered(marriage.EventName.revoke)).toBe(false);
-	});
-
-	it ("Adds a listener even when the event does not exist (it registers a new event)", function () {
-
 	});
 });
