@@ -27,7 +27,7 @@
 	/**
 	 * Dispatches the event.
 	 * @param {marriage.EventName} eventName
-	 * @param {object} eventArgs
+	 * @param {object=} eventArgs
 	 * @throws {marriage.Error.EventNotRegistered}
 	 */
 	marriage.Dispatcher.prototype.dispatchEvent = function (eventName, eventArgs) {
