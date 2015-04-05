@@ -14,6 +14,7 @@ module.exports = function(config) {
 			"src/event/name.js",
 			"src/event/event.js",
 			"src/event/dispatcher.js",
+			"src/module.js",
 			"src/game/game.js",
 			"src/player/player.js",
 			"src/player/role.js",
@@ -24,6 +25,7 @@ module.exports = function(config) {
 			// tests
 			"test/error.js",
 			"test/gadget.js",
+			"test/module.js",
 			"test/card/card.js",
 			"test/card/pack.js",
 			"test/event/name.js",
