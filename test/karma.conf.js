@@ -14,6 +14,8 @@ module.exports = function(config) {
 			"src/event/name.js",
 			"src/event/event.js",
 			"src/event/event.pre.js",
+			"src/event/event.up.js",
+			"src/event/event.start.js",
 			"src/event/dispatcher.js",
 			"src/module.js",
 			"src/game/game.js",
