@@ -10,7 +10,7 @@ describe("The dispatcher", function () {
 
 	it("Al events are registered in the dispatcher", function () {
 		var events = dispatcher.events,
-			names = marriage.EventName,
+			names = marriage.event.Name,
 			name;
 
 		for (name in names) {
@@ -24,17 +24,17 @@ describe("The dispatcher", function () {
 		var listener = function () {};
 
 		expect(function () {
-			dispatcher.addEventListener(marriage.EventName.pre, listener);
+			dispatcher.addEventListener(marriage.event.Name.pre, listener);
 		}).not.toThrow();
-		expect(dispatcher.events[marriage.EventName.pre].indexOf(listener)).not.toBe(-1);
+		expect(dispatcher.events[marriage.event.Name.pre].indexOf(listener)).not.toBe(-1);
 	});
 
 	it("One listener cannot be registered two times", function () {
 		var listener = function () {};
-		dispatcher.addEventListener(marriage.EventName.pre, listener);
+		dispatcher.addEventListener(marriage.event.Name.pre, listener);
 
 		expect(function () {
-			dispatcher.addEventListener(marriage.EventName.pre, listener);
+			dispatcher.addEventListener(marriage.event.Name.pre, listener);
 		}).toThrow(marriage.Error.ListenerAlreadyRegistered);
 	});
 
@@ -46,7 +46,7 @@ describe("The dispatcher", function () {
 
 		spyOn(myObject, "listener");
 
-		dispatcher.addEventListener(marriage.EventName.pre, myObject.listener);
+		dispatcher.addEventListener(marriage.event.Name.pre, myObject.listener);
 		dispatcher.dispatchEvent(event);
 
 		expect(myObject.listener).toHaveBeenCalledWith(event);

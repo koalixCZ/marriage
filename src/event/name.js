@@ -7,7 +7,7 @@
 	/**
 	 * @enum {string}
 	 */
-	marriage.EventName = {
+	marriage.event.Name = {
 		pre: "pre",
 		up: "up",
 		start: "start",
@@ -17,10 +17,10 @@
 
 	/**
 	 * Invokes the function passed to this function
-	 * @param {function(marriage.EventName)} func
+	 * @param {function(marriage.event.Name)} func
 	 */
 	marriage.event.doForEachEventName = function(func) {
-		var names = marriage.EventName;
+		var names = marriage.event.Name;
 
 		names.forEach(function(name) {
 			if (names.hasOwnProperty(name)) {

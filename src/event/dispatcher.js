@@ -9,7 +9,7 @@
 	marriage.Dispatcher = function () {
 		/**
 		 * @private
-		 * @type {Object.<marriage.EventName, []>}
+		 * @type {Object.<marriage.event.Name, []>}
 		 */
 		this.events = {};
 		registerEvents(this.events);
@@ -30,7 +30,7 @@
 
 	/**
 	 * Adds an event listener.
-	 * @param {marriage.EventName} eventName
+	 * @param {marriage.event.Name} eventName
 	 * @param {function} listener
 	 * @throws {marriage.Error.ListenerAlreadyRegistered}
 	 */
@@ -46,10 +46,10 @@
 
 	/**
 	 * Registers all events.
-	 * @param {Object.<marriage.EventName, []>} events
+	 * @param {Object.<marriage.event.Name, []>} events
 	 */
 	function registerEvents(events) {
-		var names = marriage.EventName,
+		var names = marriage.event.Name,
 			name;
 
 		for (name in names) {

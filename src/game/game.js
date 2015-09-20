@@ -77,6 +77,13 @@
 	};
 
 	/**
+	 * Play a game.
+	 */
+	marriage.Game.prototype.play = function () {
+		this.dispatcher.dispatchEvent(new marriage.event.Pre());
+	};
+
+	/**
 	 * Switch roles.
 	 */
 	marriage.Game.prototype.switchRoles = function () {

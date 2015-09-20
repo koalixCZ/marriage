@@ -4,20 +4,20 @@
 
 	/**
 	 * Creates a new instance of Event.
-	 * @param {marriage.EventName} name
+	 * @param {marriage.event.Name} name
 	 * @constructor
 	 */
 	marriage.Event = function (name){
 		/**
 		 * @private
-		 * @type {marriage.EventName}
+		 * @type {marriage.event.Name}
 		 */
 		this.name = name;
 	};
 
 	/**
 	 * Return a name of the event.
-	 * @return {marriage.EventName}
+	 * @return {marriage.event.Name}
 	 */
 	marriage.Event.prototype.getName = function () {
 		return this.name;

@@ -12,5 +12,5 @@
 	marriage.event.Pre = function () {
 	};
 
-	marriage.event.Pre.prototype = new marriage.Event(marriage.EventName.pre);
+	marriage.event.Pre.prototype = new marriage.Event(marriage.event.Name.pre);
 }());

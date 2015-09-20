@@ -1,4 +1,4 @@
-/*global marriage, describe, it, expect */
+/*global marriage, describe, it, expect, spyOn */
 describe("The game", function() {
 	"use strict";
 
@@ -60,5 +60,15 @@ describe("The game", function() {
 		expect(getRoleNameOnIndex(players, 0)).toBe(marriage.role.RoleName.foreman);
 		expect(getRoleNameOnIndex(players, 1)).toBe(marriage.role.RoleName.centre);
 		expect(getRoleNameOnIndex(players, 2)).toBe(marriage.role.RoleName.defender);
+	});
+
+	it("The method play fire's 'pre' event", function () {
+		var game = new marriage.Game(marriage.game.Type.elective),
+			dispatcher = marriage.Module.dispatcher;
+
+		spyOn(dispatcher, "dispatchEvent");
+
+		game.play();
+		expect(dispatcher.dispatchEvent).toHaveBeenCalledWith(new marriage.event.Pre());
 	});
 });
