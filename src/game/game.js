@@ -72,8 +72,9 @@
 		// 10. game
 
 		// Betl / durch
-		// When somebody picks up the talon, it means that contract is rejected and he wants to play betl or durch
-		// If betl has been announced, another player can reject it and play durch
+		// When somebody picks up the talon, it means that contract is rejected and he wants to play betl or durch.
+		// If betl has been announced, another player can reject it and play durch.
+		// Durch is the final game scenario.
 	};
 
 	/**

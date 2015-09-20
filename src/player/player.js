@@ -18,6 +18,13 @@
 		 * @type {marriage.Role}
 		 */
 		this.role = null;
+		/**
+		 * @private
+		 * @type {marriage.Dispatcher}
+		 */
+		this.dispatcher = marriage.Module.dispatcher;
+
+		this.dispatcher.addEventListener(marriage.event.Name.pre, this.preEventHandler);
 	};
 
 	/**
@@ -42,5 +49,13 @@
 	 */
 	marriage.Player.prototype.setRole = function (role) {
 		this.role = role;
+	};
+
+	/**
+	 * Handler of the 'pre' event. When player is ready, 'up' event is dispatched.
+	 * @param {marriage.event.Pre} event
+	 */
+	marriage.Player.prototype.preEventHandler = function (event) {
+		this.dispatcher.dispatchEvent(new marriage.event.Up());
 	};
 }());
