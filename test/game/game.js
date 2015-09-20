@@ -14,14 +14,14 @@ describe("The game", function() {
 
 	describe("The types", function () {
 		it("Expected game types exist", function () {
-			expect(marriage.game.Type.bidden).toBe("licitovanı");
-			expect(marriage.game.Type.cross).toBe("køíovı");
-			expect(marriage.game.Type.draw).toBe("lízanı");
-			expect(marriage.game.Type.elective).toBe("volenı");
+			expect(marriage.game.Type.bidden).toBe("licitovanÃ½");
+			expect(marriage.game.Type.cross).toBe("kÅ™Ã­Å¾ovÃ½");
+			expect(marriage.game.Type.draw).toBe("lÃ­zanÃ½");
+			expect(marriage.game.Type.elective).toBe("volenÃ½");
 		});
 	});
 
-	it("Initial order of roles in game 'volenı' are 'forhont, støední hráè, zadák'", function () {
+	it("Initial order of roles in game 'volenÃ½' are 'forhont, stÅ™ednÃ­ hrÃ¡Ä, zadÃ¡k'", function () {
 		//noinspection JSAccessibilityCheck
 		var game = new marriage.Game(marriage.game.Type.elective),
 			players = game.players;

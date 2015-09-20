@@ -9,55 +9,53 @@
 	marriage.Dispatcher = function () {
 		/**
 		 * @private
-		 * @type {Object.<marriage.EventName, marriage.Event>}
+		 * @type {Object.<marriage.EventName, []>}
 		 */
 		this.events = {};
-	};
-
-	/**
-	 * Registers a new event.
-	 * @param {marriage.EventName} eventName
-	 */
-	marriage.Dispatcher.prototype.registerEvent = function (eventName) {
-		if (!this.isEventRegistered(eventName)) {
-			this.events[eventName] = new marriage.Event(eventName);
-		}
+		registerEvents(this.events);
 	};
 
 	/**
 	 * Dispatches the event.
-	 * @param {marriage.EventName} eventName
-	 * @param {object=} eventArgs
-	 * @throws {marriage.Error.EventNotRegistered}
+	 * @param {marriage.Event} event
 	 */
-	marriage.Dispatcher.prototype.dispatchEvent = function (eventName, eventArgs) {
-		if (!this.isEventRegistered(eventName)) {
-			throw marriage.Error.EventNotRegistered;
+	marriage.Dispatcher.prototype.dispatchEvent = function (event) {
+		var eventName = event.getName(),
+			listeners = this.events[eventName];
+
+		listeners.forEach(function (listener) {
+			listener(event);
+		});
+	};
+
+	/**
+	 * Adds an event listener.
+	 * @param {marriage.EventName} eventName
+	 * @param {function} listener
+	 * @throws {marriage.Error.ListenerAlreadyRegistered}
+	 */
+	marriage.Dispatcher.prototype.addEventListener = function (eventName, listener) {
+		var listeners = this.events[eventName];
+
+		if (listeners.indexOf(listener) !== -1) {
+			throw marriage.Error.ListenerAlreadyRegistered;
 		}
-
-		var event = this.events[eventName];
-		event.dispatch(eventArgs);
+		listeners.push(listener);
 	};
+
 
 	/**
-	 * Adds an event listener. Adds the event when it is not registered yet.
-	 * @param {marriage.EventName} eventName
-	 * @param {function} callback
+	 * Registers all events.
+	 * @param {Object.<marriage.EventName, []>} events
 	 */
-	marriage.Dispatcher.prototype.addEventListener = function (eventName, callback) {
-		this.registerEvent(eventName);
+	function registerEvents(events) {
+		var names = marriage.EventName,
+			name;
 
-		var event = this.events[eventName];
-		event.register(callback);
-	};
-
-	/**
-	 * Returns true when the event has been registered.
-	 * @param {marriage.EventName} eventName
-	 * @return {boolean} true when event is registered
-	 */
-	marriage.Dispatcher.prototype.isEventRegistered = function (eventName) {
-		var event = this.events[eventName];
-		return !!(event && event.constructor === marriage.Event);
-	};
+		for (name in names) {
+			if (names.hasOwnProperty(name)) {
+				events[name] = [];
+			}
+		}
+	}
 }());

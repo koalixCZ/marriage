@@ -9,10 +9,10 @@
 	 * @enum {string}
 	 */
 	marriage.game.Type = {
-		elective: "volenı",
-		bidden: "licitovanı",
-		draw: "lízanı",
-		cross: "køíovı"
+		elective: "volenÃ½",
+		bidden: "licitovanÃ½",
+		draw: "lÃ­zanÃ½",
+		cross: "kÅ™Ã­Å¾ovÃ½"
 	};
 
 
@@ -42,7 +42,7 @@
 		 * @private
 		 * @type {marriage.Dispatcher}
 		 */
-		this.dispatcher = new marriage.Dispatcher();
+		this.dispatcher = marriage.Module.dispatcher;
 
 		/**
 		 * @private

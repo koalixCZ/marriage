@@ -8,59 +8,47 @@ describe("The dispatcher", function () {
 		dispatcher = new marriage.Dispatcher();
 	});
 
-	it("It is possible to register a new event", function () {
-		dispatcher.registerEvent(marriage.EventName.revoke);
-		expect(dispatcher.events[marriage.EventName.revoke].constructor).toBe(marriage.Event);
+	it("Al events are registered in the dispatcher", function () {
+		var events = dispatcher.events,
+			names = marriage.EventName,
+			name;
+
+		for (name in names) {
+			if (names.hasOwnProperty(name)) {
+				expect(Array.isArray(events[name])).toBe(true);
+			}
+		}
 	});
 
-	it("An existing event will not be replaced by", function () {
-		dispatcher.registerEvent(marriage.EventName.revoke);
-		var event = dispatcher.events[marriage.EventName.revoke];
+	it("Register a new event listener", function () {
+		var listener = function () {};
 
-		dispatcher.registerEvent(marriage.EventName.revoke);
-		expect(dispatcher.events[marriage.EventName.revoke]).toBe(event);
-	});
-
-	it("Dispatch an existing event", function () {
-		dispatcher.registerEvent(marriage.EventName.revoke);
-
-		spyOn(dispatcher.events[marriage.EventName.revoke], "dispatch");
-		dispatcher.dispatchEvent(marriage.EventName.revoke, "wombat");
-
-		expect(dispatcher.events[marriage.EventName.revoke].dispatch).toHaveBeenCalledWith("wombat");
-	});
-
-	it("Throws an error when trying to dispatch a non existing event", function () {
 		expect(function () {
-			dispatcher.dispatchEvent(marriage.EventName.revoke, function () {});
-		}).toThrow(marriage.Error.EventNotRegistered);
+			dispatcher.addEventListener(marriage.EventName.pre, listener);
+		}).not.toThrow();
+		expect(dispatcher.events[marriage.EventName.pre].indexOf(listener)).not.toBe(-1);
 	});
 
-	it("Adds an event listener to the existing event", function () {
+	it("One listener cannot be registered two times", function () {
 		var listener = function () {};
+		dispatcher.addEventListener(marriage.EventName.pre, listener);
 
-		dispatcher.registerEvent(marriage.EventName.revoke);
-		dispatcher.addEventListener(marriage.EventName.revoke, listener);
-
-		//noinspection JSAccessibilityCheck
-		expect(dispatcher.events[marriage.EventName.revoke].callbacks[0]).toBe(listener);
+		expect(function () {
+			dispatcher.addEventListener(marriage.EventName.pre, listener);
+		}).toThrow(marriage.Error.ListenerAlreadyRegistered);
 	});
 
-	it("Adds an event listener even when an the event does not exist - registers the event", function () {
-		var listener = function () {};
+	it("Dispatch an event", function () {
+		var event = new marriage.event.Pre(),
+			myObject = {
+				listener: function () {}
+			};
 
-		dispatcher.addEventListener(marriage.EventName.revoke, listener);
+		spyOn(myObject, "listener");
 
-		//noinspection JSAccessibilityCheck
-		expect(dispatcher.events[marriage.EventName.revoke].callbacks[0]).toBe(listener);
-	});
+		dispatcher.addEventListener(marriage.EventName.pre, myObject.listener);
+		dispatcher.dispatchEvent(event);
 
-	it("Returns true when the event is registered", function () {
-		dispatcher.registerEvent(marriage.EventName.revoke);
-		expect(dispatcher.isEventRegistered(marriage.EventName.revoke)).toBe(true);
-	});
-
-	it("Returns false when the event is not registered", function () {
-		expect(dispatcher.isEventRegistered(marriage.EventName.revoke)).toBe(false);
+		expect(myObject.listener).toHaveBeenCalledWith(event);
 	});
 });

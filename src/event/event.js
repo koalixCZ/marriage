@@ -13,37 +13,21 @@
 		 * @type {marriage.EventName}
 		 */
 		this.name = name;
-
-		/**
-		 * @private
-		 * @type {Array.<function>}
-		 */
-		this.callbacks = [];
 	};
 
 	/**
-	 * Registers a callback.
-	 * @param {function} callback
-	 * @throws {marriage.Error.InvalidArgumentException}
+	 * Return a name of the event.
+	 * @return {marriage.EventName}
 	 */
-	marriage.Event.prototype.register = function (callback) {
-		if (!marriage.Gadget.isFunction(callback)) {
-			throw marriage.Error.InvalidArgumentException;
-		}
-		this.callbacks.push(callback);
+	marriage.Event.prototype.getName = function () {
+		return this.name;
 	};
 
 	/**
-	 * Dispatches the event.
-	 * @param {*} eventArgs
+	 * Returns the events as a string.
+	 * @return {string}
 	 */
-	marriage.Event.prototype.dispatch = function (eventArgs) {
-		var callbacks = this.callbacks,
-			length = callbacks.length,
-			i;
-
-		for (i = 0; i < length; i++) {
-			callbacks[i](eventArgs);
-		}
+	marriage.Event.prototype.toString = function () {
+		return "Event: " + this.name;
 	};
 }());

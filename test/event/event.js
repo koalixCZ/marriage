@@ -2,46 +2,26 @@
 describe("The event", function () {
 	"use strict";
 
-	var event;
-
-	beforeEach(function () {
-		event = new marriage.Event("myTestEvent");
-	});
-
-	it("Register callback to the event", function () {
-		var callback = function() {};
-		event.register(callback);
-
-		expect(event.callbacks.indexOf(callback)).not.toBe(-1);
-	});
-
-	it("Throws an error if callback is not a function", function () {
+	it("It is possible to create a new Event", function () {
 		expect(function () {
-			event.register(null);
-		}).toThrow(marriage.Error.InvalidArgumentException);
-	});
-
-	it("Nothing happens when dispatch an event without any callback", function () {
-		expect(function () {
-			event.dispatch("an argument");
+			new marriage.Event(marriage.EventName.pre);
 		}).not.toThrow();
 	});
 
-	it("Invokes all registered callbacks", function () {
-		var obj = {
-				one: function () {},
-				two: function () {}
-			},
-			arg = "123";
+	it("Create a new Event", function () {
+		expect(function () {
+			new marriage.Event(marriage.EventName.pre);
+		}).not.toThrow();
+	});
 
-		spyOn(obj, "one");
-		spyOn(obj, "two");
+	it("An event object returns name", function () {
+		var event = new marriage.event.Pre();
+		expect(event.getName()).toBe(marriage.EventName.pre);
+	});
 
-		event.register(obj.one);
-		event.register(obj.two);
-		event.dispatch(arg);
+	it("The method toString() contains the event name in any form", function () {
+		var event = new marriage.event.Pre();
 
-		expect(obj.one).toHaveBeenCalledWith(arg);
-		expect(obj.two).toHaveBeenCalledWith(arg);
+		expect(event.toString().indexOf("Event: " + event.getName())).toBe(0);
 	});
 });
